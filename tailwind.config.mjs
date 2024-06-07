@@ -6,6 +6,11 @@ export default {
       fontFamily: {
         jura: ["Jura"],
       },
+
+      colors: {
+        light100: "#dedddb",
+        dark100: "#23262B",
+      },
     },
   },
   plugins: [],
