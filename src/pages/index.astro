@@ -11,11 +11,11 @@ import RotatingCircle from "../components/RotatingCircle.astro";
 <Layout title="Welcome to Astro.">
   <main class="p-3">
     <div>
-      <h1 class="text-8xl font-bold">Jon Karrer</h1>
+      <h1 class="text-8xl font-bold mb-4">Jon Karrer</h1>
       <outline class="text-4xl font-medium text-right">Problem Solver</outline>
     </div>
 
-    <div class="flex flex-col justify-end items-end gap-1 relative py-4 mt-8">
+    <div class="flex flex-col justify-end items-end gap-1 relative py-4 mt-12">
       <div
         class="border-t border-dashed border-y-dark100 absolute top-0 right-7 w-80"
       >
@@ -51,12 +51,22 @@ import RotatingCircle from "../components/RotatingCircle.astro";
       </div>
     </div>
 
-    <div class="flex items-center justify-between w-11/12 m-auto">
+    <div class="flex items-center justify-between w-11/12 m-auto mt-4 mb-20">
       <RotatingSquare />
       <div class="pt-28">
         <RotatingCircle />
       </div>
       <RotatingThickStroke />
     </div>
+
+    <nav
+      class="text-xl border-y border-dark100 py-8 px-4 flex items-center justify-between font-semibold"
+    >
+      <a href="/projects">Projects</a>
+      |
+      <a href="/blog">Blog</a>
+      |
+      <a href="/development">Development</a>
+    </nav>
   </main>
 </Layout>
