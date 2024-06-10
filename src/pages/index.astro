@@ -21,29 +21,75 @@ import "../global.css";
       </div>
 
       <div class="flex flex-row justify-between items-center w-28 mb-1">
-        <p class="text-dark100 text-sm font-medium">Oct 05, 1992</p>
+        <p class="text-sm font-medium">Oct 05, 1992</p>
         <div class="h-3 w-3 bg-dark100 rounded-full"></div>
       </div>
 
       <div class="flex flex-row justify-between items-center w-[132.5px]">
-        <p class="text-dark100 text-sm font-bold">Norfolk, VA</p>
+        <p class="text-sm font-bold">Norfolk, VA</p>
         <div class="h-3 w-3 bg-dark100 rounded-full"></div>
         <div class="h-3 w-3 bg-dark100 rounded-full"></div>
       </div>
 
       <div class="flex flex-row justify-between items-center w-36">
-        <p class="text-dark100 text-sm font-bold">Programmer</p>
+        <p class="text-sm font-bold">Programmer</p>
         <div class="h-3 w-3 bg-dark100 rounded-full"></div>
         <div class="h-3 w-3 bg-dark100 rounded-full"></div>
       </div>
 
       <div class="flex flex-row justify-between items-center w-36 mt-6">
-        <p class="text-dark100 text-sm font-medium">30° 14' 18.7044'' N</p>
+        <p class="text-sm font-medium">30° 14' 18.7044'' N</p>
         <div class="h-3 w-3 bg-dark100 rounded-full"></div>
       </div>
       <div>
         <div class="h-3 w-3 bg-dark100 rounded-full"></div>
       </div>
     </div>
+
+    <!-- <div class="relative">
+      <img
+        class="absolute top-0 left-0 TopCircle spin"
+        src="/half_circle_top.svg"
+        alt=""
+      />
+      <img class="absolute top-0 left-0" src="/half_circle_bottom.svg" alt="" />
+    </div> -->
+
+    <svg width="100" height="100" viewBox="0 0 100 100">
+      <circle class="circle" cx="50" cy="50" r="25"></circle>
+    </svg>
   </main>
 </Layout>
+
+<style>
+  .circle {
+    fill: none;
+    stroke: #3498db;
+    stroke-width: 50;
+    stroke-dasharray: 158; /* Half of the circumference */
+    stroke-dashoffset: 158; /* Start at 157 to show half circle */
+    animation: draw 2s linear forwards;
+  }
+
+  @keyframes draw {
+    50% {
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dashoffset: -158;
+    }
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .TopCircle {
+    transform: rotate(180deg);
+    animation: spin 2s linear infinite;
+  }
+</style>

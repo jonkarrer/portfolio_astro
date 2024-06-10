@@ -13,9 +13,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --light100: #dedddb;
+  --dark100: #23262b;
 }
 
 html,
 body {
   background-color: #dedddb;
+  color: var(--dark100);
 }
