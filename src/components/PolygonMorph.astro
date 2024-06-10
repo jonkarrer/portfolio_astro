@@ -1,0 +1,87 @@
+---
+
+---
+
+<!-- <script>
+  const polygon = document.querySelector(".polygon");
+  const shapes = [
+    "50,15 90,50 70,85 30,85 10,50",
+    "50,10 85,30 85,70 50,90 15,70 15,30",
+    "50,5 95,50 50,95 5,50",
+    "20,20 80,20 80,80 20,80",
+  ];
+  let currentShapeIndex = 0;
+
+  function animatePolygon() {
+    currentShapeIndex = (currentShapeIndex + 1) % shapes.length;
+    polygon.setAttribute("points", shapes[currentShapeIndex]);
+    setTimeout(() => {
+      requestAnimationFrame(animatePolygon);
+    }, 1000); // Change shape every 1 second
+  }
+
+  setTimeout(() => {
+    requestAnimationFrame(animatePolygon);
+  }, 1000); // Initial delay before starting the animation
+</script> -->
+<script>
+  const polygon = document.querySelector(".polygon");
+  const shapes = [
+    "50,15 90,50 70,85 30,85 10,50",
+    "50,90 15,70 50,30 85,10 85,50",
+    "50,20 15,10 70,85 85,20 85,5",
+  ];
+  let currentShapeIndex = 0;
+
+  function parsePoints(points) {
+    return points.split(" ").map((point) => point.split(",").map(Number));
+  }
+
+  function interpolatePoints(startPoints, endPoints, t) {
+    return startPoints
+      .map((start, i) => {
+        const end = endPoints[i];
+        const x = start[0] + (end[0] - start[0]) * t;
+        const y = start[1] + (end[1] - start[1]) * t;
+        return [x, y].join(",");
+      })
+      .join(" ");
+  }
+
+  function morphPolygon() {
+    const startPoints = parsePoints(shapes[currentShapeIndex]);
+    currentShapeIndex = (currentShapeIndex + 1) % shapes.length;
+    const endPoints = parsePoints(shapes[currentShapeIndex]);
+
+    let t = 0;
+    function animate() {
+      t += 0.02; // Adjust this value to control the speed
+      if (t <= 1) {
+        polygon.setAttribute(
+          "points",
+          interpolatePoints(startPoints, endPoints, t)
+        );
+        requestAnimationFrame(animate);
+      } else {
+        setTimeout(morphPolygon, 1000); // Pause before starting the next morph
+      }
+    }
+
+    animate();
+  }
+
+  setTimeout(morphPolygon, 1000); // Initial delay before starting the animation
+</script>
+
+<svg width="100" height="100" viewBox="0 0 100 100">
+  <polygon class="polygon" points="50,15 90,50 70,85 30,85 10,50"></polygon>
+</svg>
+
+<style>
+  polygon {
+    fill: #3498db;
+    stroke: #2980b9;
+    stroke-width: 2;
+    animation: draw 5s infinite;
+  }
+</style>

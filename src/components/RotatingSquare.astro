@@ -1,0 +1,25 @@
+<svg width="60" height="60" viewBox="0 0 60 60">
+  <circle class="Square" cx="30" cy="30" r="15"></circle>
+</svg>
+
+<style>
+  @keyframes drawSquare {
+    50% {
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dashoffset: -158;
+    }
+  }
+  svg {
+    border-radius: 40px;
+  }
+  .Square {
+    fill: none;
+    stroke: var(--dark100);
+    stroke-width: 50;
+    stroke-dasharray: 158;
+    stroke-dashoffset: 158;
+    animation: drawSquare 2s linear infinite;
+  }
+</style>

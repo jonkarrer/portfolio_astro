@@ -1,6 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../global.css";
+import RotatingSquare from "../components/RotatingSquare.astro";
+import RotatingSpiral from "../components/RotatingSpiral.astro";
+import Generic from "../components/PolygonMorph.astro";
+import RotatingThickStroke from "../components/RotatingThickStroke.astro";
+import RotatingCircle from "../components/RotatingCircle.astro";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -46,95 +51,12 @@ import "../global.css";
       </div>
     </div>
 
-    <!-- <div class="relative">
-      <img
-        class="absolute top-0 left-0 TopCircle spin"
-        src="/half_circle_top.svg"
-        alt=""
-      />
-      <img class="absolute top-0 left-0" src="/half_circle_bottom.svg" alt="" />
-    </div> -->
-
-    <svg width="100" height="100" viewBox="0 0 100 100">
-      <circle class="CircleOne" cx="50" cy="50" r="25"></circle>
-    </svg>
-
-    <div class="relative">
-      <svg
-        class="absolute top-0 left-0 right-0 bottom-0 m-auto"
-        width="100"
-        height="100"
-        viewBox="0 0 100 100"
-      >
-        <circle class="CircleTwo" cx="50" cy="50" r="25"></circle>
-      </svg>
-      <svg
-        class="absolute top-0 left-0 right-0 bottom-0 m-auto"
-        width="80"
-        height="80"
-        viewBox="0 0 80 80"
-      >
-        <circle class="CircleTwo" cx="40" cy="40" r="20"></circle>
-      </svg>
-      <svg
-        class="absolute top-0 left-0 right-0 bottom-0 m-auto"
-        width="60"
-        height="60"
-        viewBox="0 0 60 60"
-      >
-        <circle class="CircleTwo" cx="30" cy="30" r="15"></circle>
-      </svg>
+    <div class="flex items-center justify-between w-11/12 m-auto">
+      <RotatingSquare />
+      <div class="pt-28">
+        <RotatingCircle />
+      </div>
+      <RotatingThickStroke />
     </div>
   </main>
 </Layout>
-
-<style>
-  .CircleOne {
-    fill: none;
-    stroke: var(--dark100);
-    stroke-width: 50;
-    stroke-dasharray: 158; /* Half of the circumference */
-    stroke-dashoffset: 158; /* Start at 157 to show half circle */
-    animation: DrawCircleOne 2s linear infinite;
-  }
-
-  .CircleTwo {
-    fill: none;
-    stroke: var(--dark100);
-    stroke-width: 2;
-    stroke-dasharray: 158; /* Half of the circumference */
-    stroke-dashoffset: 158;
-    animation: DrawCircleTwo 2s linear infinite;
-  }
-
-  @keyframes DrawCircleOne {
-    50% {
-      stroke-dashoffset: 0;
-    }
-    100% {
-      stroke-dashoffset: -158;
-    }
-  }
-  @keyframes DrawCircleTwo {
-    50% {
-      stroke-dashoffset: 0;
-    }
-    100% {
-      stroke-dashoffset: -158;
-    }
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(180deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  .TopCircle {
-    transform: rotate(180deg);
-    animation: spin 2s linear infinite;
-  }
-</style>
